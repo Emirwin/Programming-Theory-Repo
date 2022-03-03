@@ -8,15 +8,25 @@ public class WordBlock : MonoBehaviour
     public string currentWord;
     public GameObject blockRender;
     public GameObject wordDisplay;
+    protected SentenceHolder sentenceHolder;
 
     private Vector3 mouseOffset;
     private float mouseZCoord;
 
-    private bool isPlural = false;
+    private bool m_isPlural = false;
+    public bool isPlural
+    {
+        get {return m_isPlural;}
+        set {m_isPlural=value;}
+    }
+
+    protected string infoMessage, additionalInfo;
     // Start is called before the first frame update
     void Start()
     {
-        
+        wordDisplay.GetComponent<TextMesh>().text = baseWord;
+        currentWord = baseWord;
+        sentenceHolder = GameObject.Find("SentenceHolder").GetComponent<SentenceHolder>();
     }
 
     // Update is called once per frame
@@ -37,24 +47,34 @@ public class WordBlock : MonoBehaviour
         DragBlock();
     }
 
+    public virtual void OnMouseOver()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Pluralize();
+        }
+    }
+
     public virtual void DisplayWord()
     {
         //changes the Word child gameObject of the word block to the currentWord
         currentWord = wordDisplay.GetComponent<TextMesh>().text;
-        Debug.Log(currentWord);
+        infoMessage = $"{currentWord} {additionalInfo}";
+        //Debug.Log(currentWord);
+        sentenceHolder.displayInfo.GetComponent<TextMesh>().text = infoMessage;
     }
 
     public virtual void Pluralize()
     {
-        if (!isPlural)
+        if (!m_isPlural)
         {
             wordDisplay.GetComponent<TextMesh>().text += "s";
-            isPlural = true;
+            m_isPlural = true;
         }
         else
         {
             wordDisplay.GetComponent<TextMesh>().text = baseWord;
-            isPlural = false;
+            m_isPlural = false;
         }
         
     }

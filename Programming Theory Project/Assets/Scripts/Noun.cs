@@ -6,8 +6,23 @@ public class Noun : WordBlock
 {
     public override void DisplayWord()
     {
-        //base.DisplayWord();
-        currentWord = wordDisplay.GetComponent<TextMesh>().text;
+        additionalInfo = "is a Noun";
+        if(isPlural)
+        {
+            additionalInfo += ". Plural.";
+        }
+        else
+        {
+            additionalInfo += ". Singular.";
+        }
+        base.DisplayWord();
+        //currentWord = wordDisplay.GetComponent<TextMesh>().text;
         Debug.Log($"{currentWord} is a Noun");
+    }
+
+    public override void Pluralize()
+    {
+        base.Pluralize();
+
     }
 }
