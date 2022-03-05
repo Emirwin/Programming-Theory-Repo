@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//INHERITANCE
 public class Verb : WordBlock
 {
     public new bool isPlural = true;
     public bool isNominalized = false;
+    //POLYMORPHISM
     public override void DisplayWord()
     {
         //currentWord = wordDisplay.GetComponent<TextMesh>().text;
@@ -28,6 +29,7 @@ public class Verb : WordBlock
         base.DisplayWord();
     }
 
+    //POLYMORPHISM
     public override void OnMouseOver()
     {
         base.OnMouseOver();
@@ -37,6 +39,7 @@ public class Verb : WordBlock
         }
     }
 
+    //POLYMORPHISM
     public override void Pluralize()
     {
         //base.Pluralize();
@@ -52,6 +55,7 @@ public class Verb : WordBlock
         }
     }
 
+    //ABSTRACTION
     public void Nominalize()
     {
         if(!isNominalized)

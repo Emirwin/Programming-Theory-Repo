@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//INHERITANCE
 public class Copula : WordBlock
 {
+    //POLYMORPHISM
     public override void DisplayWord()
     {
         additionalInfo = "is a linking verb";
@@ -19,7 +20,7 @@ public class Copula : WordBlock
         //currentWord = wordDisplay.GetComponent<TextMesh>().text;
         Debug.Log($"{currentWord} is a Verb");
     }
-
+    //POLYMORPHISM
     public override void Pluralize()
     {
         if (!isPlural)

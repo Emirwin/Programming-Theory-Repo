@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//INHERITANCE
 public class WordBlock : MonoBehaviour
 {
     public string baseWord;
@@ -13,6 +13,7 @@ public class WordBlock : MonoBehaviour
     private Vector3 mouseOffset;
     private float mouseZCoord;
 
+    //ENCAPSULATION
     private bool m_isPlural = false;
     public bool isPlural
     {
@@ -55,6 +56,7 @@ public class WordBlock : MonoBehaviour
         }
     }
 
+    //ABSTRACTION
     public virtual void DisplayWord()
     {
         //changes the Word child gameObject of the word block to the currentWord
@@ -64,6 +66,7 @@ public class WordBlock : MonoBehaviour
         sentenceHolder.displayInfo.GetComponent<TextMesh>().text = infoMessage;
     }
 
+    //ABSTRACTION
     public virtual void Pluralize()
     {
         if (!m_isPlural)
@@ -79,6 +82,7 @@ public class WordBlock : MonoBehaviour
         
     }
 
+    //ABSTRACTION
     Vector3 GetMouseWorldPos()
     {
         Vector3 mousePoint = Input.mousePosition;
